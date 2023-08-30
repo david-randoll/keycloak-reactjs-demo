@@ -1,8 +1,8 @@
 {
-  "realm": "bookshop",
-  "auth-server-url": "http://localhost:8080/",
+  "realm": "Eazybankdev",
+  "auth-server-url": "http://localhost:10002/",
   "ssl-required": "external",
-  "resource": "bookBox",
+  "resource": "keycloak-react-demo",
   "public-client": true,
   "confidential-port": 0
 }

@@ -7,10 +7,11 @@ import App from "./components/App";
 import rootReducer from "./modules";
 import UserService from "./services/UserService";
 
-
 // HTTP
 
-const _axios = axios.create({ baseURL: 'https://erah07zkak.execute-api.eu-central-1.amazonaws.com' });
+const _axios = axios.create({
+  baseURL: "https://erah07zkak.execute-api.eu-central-1.amazonaws.com",
+});
 _axios.interceptors.request.use((config) => {
   if (UserService.isLoggedIn()) {
     const cb = () => {
@@ -21,7 +22,6 @@ _axios.interceptors.request.use((config) => {
   }
 });
 
-
 // REDUX STORE
 
 const _middleware = applyMiddleware(thunk, axiosMiddleware(_axios));
@@ -29,6 +29,7 @@ const store = createStore(rootReducer, _middleware);
 
 // APP
 
-const renderApp = () => createRoot(document.getElementById("app")).render(<App store={store}/>);
+const renderApp = () =>
+  createRoot(document.getElementById("app")).render(<App store={store} />);
 
 UserService.initKeycloak(renderApp);

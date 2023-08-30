@@ -8,6 +8,9 @@ const Welcome = () => (
       <button className="btn btn-lg btn-success" onClick={() => UserService.doLogin()}>Login</button>
     </p>
     <p>
+      <button className="btn btn-lg btn-success" onClick={() => UserService.doLogin({ idpHint: "github" })}>Login with Github</button>
+    </p>
+    <p>
       <button className="btn btn-lg btn-warning" onClick={() => UserService.doLogin({ acr: { values: ['gold'], essential: true } })}>
         Login (Gold)
       </button>
