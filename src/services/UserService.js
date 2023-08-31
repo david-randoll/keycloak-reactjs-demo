@@ -1,6 +1,10 @@
 import Keycloak from "keycloak-js";
 
-const _kc = new Keycloak("/keycloak.json");
+const _kc = new Keycloak({
+  url: "http://localhost:10002/",
+  realm: "Eazybankdev",
+  clientId: "keycloak-react-demo",
+});
 
 /**
  * Initializes Keycloak instance and calls the provided callback function if successfully authenticated.
@@ -12,6 +16,7 @@ const initKeycloak = (onAuthenticatedCallback) => {
     .init({
       onLoad: "check-sso",
       pkceMethod: "S256",
+      redirectUri: "http://localhost:3000/",
     })
     .then((authenticated) => {
       if (!authenticated) {
