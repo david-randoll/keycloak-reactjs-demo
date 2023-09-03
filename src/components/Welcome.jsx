@@ -12,7 +12,7 @@ const Welcome = () => {
         <button className="btn btn-lg btn-success" onClick={() => UserService.doLogin({ loginHint: username })}>Continue with Email</button>
       </p>
       <p>
-        <button className="btn btn-lg btn-success" onClick={() => UserService.doLogin({ idpHint: "github" })}>Login with Github</button>
+        <button className="btn btn-lg btn-success" onClick={() => UserService.doLogin({ idpHint: "microsoft" })}>Login with Microsoft</button>
       </p>
       <p>
         <button className="btn btn-lg btn-warning" onClick={() => UserService.doLogin({ acr: { values: ['gold'], essential: true } })}>

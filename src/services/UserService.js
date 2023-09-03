@@ -1,9 +1,9 @@
 import Keycloak from "keycloak-js";
 
 const _kc = new Keycloak({
-  url: "http://localhost:10002/",
-  realm: "Eazybankdev",
-  clientId: "keycloak-react-demo",
+  url: "https://licensing.scubeenterprise.com/",
+  realm: "schenectady",
+  clientId: "clerkXpress-frontend-local",
 });
 
 /**
@@ -42,7 +42,10 @@ const updateToken = (successCallback) =>
 
 const getUsername = () => _kc.tokenParsed?.preferred_username;
 
-const hasRole = (roles) => roles.some((role) => _kc.hasRealmRole(role));
+const hasAnyPermission = (roles) =>
+  roles.some((role) => _kc.hasRealmRole(role));
+const hasAllPermissions = (roles) =>
+  roles.every((role) => _kc.hasRealmRole(role));
 
 const UserService = {
   initKeycloak,
@@ -53,7 +56,8 @@ const UserService = {
   getTokenParsed,
   updateToken,
   getUsername,
-  hasRole,
+  hasAnyPermission,
+  hasAllPermissions,
 };
 
 export default UserService;
