@@ -4,24 +4,27 @@ import BookForm from "./BookForm";
 import BookList from "./BookList";
 import Menu from "./Menu";
 import NoMatch from "./NoMatch";
-import RenderOnRole from "./RenderOnRole";
+import RenderOnPermission from "./RenderOnPermission";
 import SecretBooks from "./SecretBooks";
 
 const BookBox = () => (
   <>
-    <Menu/>
+    <Menu />
     <Routes>
-      <Route exact path="/" element={<BookList/>}/>
-      <Route exact path="/books/new" element={<BookForm/>}/>
-      <Route path="/books/:bookId" element={<BookDetails/>}/>
-      <Route path="/secret" element={
-        <RenderOnRole roles={['admin']} showNotAllowed>
-          <SecretBooks/>
-        </RenderOnRole>
-      }/>
-      <Route path="*" element={<NoMatch/>}/>
+      <Route exact path="/" element={<BookList />} />
+      <Route exact path="/books/new" element={<BookForm />} />
+      <Route path="/books/:bookId" element={<BookDetails />} />
+      <Route
+        path="/secret"
+        element={
+          <RenderOnPermission roles={["admin"]} showNotAllowed>
+            <SecretBooks />
+          </RenderOnPermission>
+        }
+      />
+      <Route path="*" element={<NoMatch />} />
     </Routes>
   </>
-)
+);
 
-export default BookBox
+export default BookBox;

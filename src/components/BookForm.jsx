@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { addBook } from "../modules/books";
-import RenderOnRole from "./RenderOnRole";
+import RenderOnPermission from "./RenderOnPermission";
 
 const BookForm = () => {
 
@@ -36,9 +36,9 @@ const BookForm = () => {
             <input type="text" className="form-control" placeholder="Title"
                    value={title} onChange={(e) => setTitle(e.target.value)}/>
           </div>
-          <RenderOnRole roles={['user']}>
+          <RenderOnPermission permissions={['user']}>
             <button type="submit" className="btn btn-primary">Add book</button>
-          </RenderOnRole>
+          </RenderOnPermission>
         </form>
       </div>
     </div>
